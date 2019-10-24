@@ -189,6 +189,7 @@ public class FilterUtilsTest
     Path ref = new File(REF_PREFIX + "/filefiltering1.ref").toPath();
     Path out = new File(System.getProperty("java.io.tmpdir") + "/dummyscript-exp.sh").toPath();
     try {
+      out.toFile().delete();
       FilterUtils.filterFile(m_Log, m_PathDummyScript, out, m_Model);
       String comparison = compare(ref, out);
       if (comparison != null)
@@ -197,6 +198,9 @@ public class FilterUtilsTest
     catch (Exception e) {
       e.printStackTrace();
       fail(e.getMessage());
+    }
+    finally {
+      out.toFile().delete();
     }
   }
 
@@ -209,6 +213,7 @@ public class FilterUtilsTest
     Map<String,String> vars = new HashMap<>();
     vars.put("comment", "This comment shows how to use custom variables");
     try {
+      out.toFile().delete();
       FilterUtils.filterFile(m_Log, m_PathDummyScript, out, m_Model, vars);
       String comparison = compare(ref, out);
       if (comparison != null)
@@ -217,6 +222,9 @@ public class FilterUtilsTest
     catch (Exception e) {
       e.printStackTrace();
       fail(e.getMessage());
+    }
+    finally {
+      out.toFile().delete();
     }
   }
 
@@ -227,6 +235,7 @@ public class FilterUtilsTest
     Path ref = new File(REF_PREFIX + "/filefiltering3.ref").toPath();
     Path out = new File(System.getProperty("java.io.tmpdir") + "/dummytext-exp.txt").toPath();
     try {
+      out.toFile().delete();
       FilterUtils.filterFile(m_Log, m_PathDummyText, out, m_Model, "@<", ">@");
       String comparison = compare(ref, out);
       if (comparison != null)
@@ -235,6 +244,9 @@ public class FilterUtilsTest
     catch (Exception e) {
       e.printStackTrace();
       fail(e.getMessage());
+    }
+    finally {
+      out.toFile().delete();
     }
   }
 
@@ -249,6 +261,7 @@ public class FilterUtilsTest
     vars.put("var2", "1.2");
     vars.put("var3", "1.3");
     try {
+      out.toFile().delete();
       FilterUtils.filterFile(m_Log, m_PathDummyText, out, m_Model, vars, "@<", ">@");
       String comparison = compare(ref, out);
       if (comparison != null)
@@ -257,6 +270,9 @@ public class FilterUtilsTest
     catch (Exception e) {
       e.printStackTrace();
       fail(e.getMessage());
+    }
+    finally {
+      out.toFile().delete();
     }
   }
 
