@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# This comment shows how to use custom variables
+
+echo "My Dummy Project 1.0.0"
+

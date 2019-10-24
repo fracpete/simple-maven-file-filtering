@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# ${comment}
+
+echo "My Dummy Project 1.0.0"
+
